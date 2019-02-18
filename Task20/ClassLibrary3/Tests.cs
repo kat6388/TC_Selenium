@@ -4,6 +4,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using OpenQA.Selenium.Chrome;
 
+
 namespace Task70_POM
 {
     [TestFixture]
@@ -30,6 +31,12 @@ namespace Task70_POM
             tutby.Login(username, password);
 
             var loginState = tutby.IsUserLogin();
+
+            ITakesScreenshot screenshotDriver = Driver as ITakesScreenshot;
+            Screenshot screenshot = screenshotDriver.GetScreenshot();
+            String fp = "D:\\" + "snapshot" + "_" + DateTime.Now.ToString("dd_MMMM_hh_mm_ss_tt") + ".png";
+            screenshot.SaveAsFile(fp, ScreenshotImageFormat.Png);
+
             Assert.IsTrue(loginState);
         }
 
@@ -44,6 +51,12 @@ namespace Task70_POM
             tutby.Logout();
 
             var logoutState = tutby.IsUserLogout();
+
+            ITakesScreenshot screenshotDriver = Driver as ITakesScreenshot;
+            Screenshot screenshot = screenshotDriver.GetScreenshot();
+            String fp = "D:\\" + "snapshot" + "_" + DateTime.Now.ToString("dd_MMMM_hh_mm_ss_tt") + ".png";
+            screenshot.SaveAsFile(fp, ScreenshotImageFormat.Png);
+
             Assert.IsTrue(logoutState);
         }
 
