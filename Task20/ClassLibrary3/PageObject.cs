@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
 
 namespace Task70_POM
 {
@@ -60,7 +61,12 @@ namespace Task70_POM
             return driver.FindElement(By.LinkText("Войти")).Displayed;
         }
 
+        public void TakeScreenshot ()
+        {
+            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+            Screenshot screenshot = screenshotDriver.GetScreenshot();
+            String fp = "D:\\" + "snapshot" + "_" + DateTime.Now.ToString("dd_MMMM_hh_mm_ss_tt") + ".png";
+            screenshot.SaveAsFile(fp, ScreenshotImageFormat.Png);
+        }
     }
-
-
 }
