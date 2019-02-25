@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -20,7 +15,7 @@ namespace Tests
 
             var driver = Drivers.Methods.NavigateTo(url);
             var actualUrl = Drivers.Methods.GetUrl(driver);
-            Assert.IsTrue(actualUrl.StartsWith(url), "invalid url)");
+            Assert.IsTrue(actualUrl.StartsWith(url), "Invalid url)");
 
             Drivers.Methods.PopulateLoginForm(driver,username,password);
 
@@ -30,9 +25,8 @@ namespace Tests
 
             Drivers.Methods.LoginUser(driver);
 
-            var loginState = Drivers.Methods.IsUserLogin(driver);
             Drivers.Methods.IsUserLogin(driver);
-            Assert.IsTrue(loginState);
+            Assert.IsTrue(Drivers.Methods.IsUserLogin(driver));
         }
     }
 }
