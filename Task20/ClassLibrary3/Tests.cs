@@ -11,11 +11,12 @@ namespace Task70_POM
     {
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
+        public const string username = "seleniumtests@tut.by";
+        public const string password = "123456789zxcvbn";
 
         [SetUp]
         public void SetupTest()
         {
-            
             Driver = new ChromeDriver(@"D:\Automation");
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
         }
@@ -25,12 +26,9 @@ namespace Task70_POM
         {
             PageObject tutby = new PageObject(Driver);
             tutby.Navigate();
-            string username = "seleniumtests@tut.by";
-            string password = "123456789zxcvbn";
             tutby.Login(username, password);
 
-            var loginState = tutby.IsUserLogin();
-            Assert.IsTrue(loginState);
+            Assert.IsTrue(tutby.IsUserLogin());
         }
 
         [Test]
@@ -38,13 +36,10 @@ namespace Task70_POM
         {
             PageObject tutby = new PageObject(Driver);
             tutby.Navigate();
-            string username = "seleniumtests@tut.by";
-            string password = "123456789zxcvbn";
             tutby.Login(username, password);
             tutby.Logout();
 
-            var logoutState = tutby.IsUserLogout();
-            Assert.IsTrue(logoutState);
+            Assert.IsTrue(tutby.IsUserLogout());
         }
 
 

@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace Task70_POM
 {
-    class PageObject
+   public class PageObject
     {
         private readonly IWebDriver driver;
         private readonly string url = @"https://www.tut.by/";
