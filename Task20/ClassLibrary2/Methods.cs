@@ -39,7 +39,7 @@ namespace Drivers
 
         public static bool IsUserLogin(IWebDriver chromeDriver)
         {
-            return chromeDriver.FindElement(By.LinkText("Selenium Test")).Displayed;
+            return chromeDriver.FindElement(By.ClassName("uname")).Displayed;
         }
     }
 }

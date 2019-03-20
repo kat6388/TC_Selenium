@@ -24,15 +24,11 @@ namespace Tests
 
             Drivers.Methods.PopulateLoginForm(driver,username,password);
 
-            var submitButtonState = Drivers.Methods.IsLoginButtonEnabled(driver);
-            Drivers.Methods.IsLoginButtonEnabled(driver);
-            Assert.IsTrue(submitButtonState);
+            Assert.IsTrue(Drivers.Methods.IsLoginButtonEnabled(driver));
 
             Drivers.Methods.LoginUser(driver);
 
-            var loginState = Drivers.Methods.IsUserLogin(driver);
-            Drivers.Methods.IsUserLogin(driver);
-            Assert.IsTrue(loginState);
+            Assert.IsTrue(Drivers.Methods.IsUserLogin(driver));
         }
     }
 }

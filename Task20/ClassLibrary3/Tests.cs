@@ -1,13 +1,17 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Internal;
+using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 using OpenQA.Selenium.Chrome;
+
+using Allure.Commons;
+using Allure.NUnit.Attributes;
 
 namespace Task70_POM
 {
     [TestFixture]
-    public class Tests
+    public class Tests:AllureReport
     {
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
@@ -21,7 +25,24 @@ namespace Task70_POM
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
         }
 
+        [TearDown]
+        public void TearDownTest()
+        {
+            AllureLifecycle.Instance.RunStep(() =>
+            {
+                TestContext.Error.WriteLine(
+                    $"Test {TestExecutionContext.CurrentContext.CurrentTest.FullName}\" is stopping...");
+                PageObject tutby = new PageObject(Driver);
+                tutby.TakeScreenshot();
+            });
+        }
+
         [Test]
+        [AllureSubSuite("Login")]
+        [AllureSeverity(Allure.Commons.Model.SeverityLevel.Critical)]
+        [AllureLink("ID-124")]
+        [AllureTest]
+        [AllureOwner("Katya Astakhova")]
         public void LoginUserTutBy()
         {
             PageObject tutby = new PageObject(Driver);
@@ -32,6 +53,12 @@ namespace Task70_POM
         }
 
         [Test]
+        [AllureSubSuite("Login")]
+        [AllureSeverity(Allure.Commons.Model.SeverityLevel.Critical)]
+        [AllureLink("ID-125")]
+        [AllureTest]
+        [AllureOwner("Katya Astakhova")]
+
         public void LogoutUserTutBy()
         {
             PageObject tutby = new PageObject(Driver);

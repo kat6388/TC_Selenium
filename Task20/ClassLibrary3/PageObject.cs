@@ -4,7 +4,7 @@ using System;
 
 namespace Task70_POM
 {
-    class PageObject
+   public class PageObject
     {
         private readonly IWebDriver driver;
         private readonly string url = @"https://www.tut.by/";
@@ -51,16 +51,14 @@ namespace Task70_POM
             LoggedUser.Click();
             LogoutButton.Click();
         }
-
         public bool IsUserLogin()
         {
-            return driver.FindElement(By.LinkText("Selenium Test")).Displayed;
+            return driver.FindElement(By.ClassName("uname")).Displayed;
         }
         public bool IsUserLogout()
         {
             return driver.FindElement(By.LinkText("Войти")).Displayed;
         }
-
         public void TakeScreenshot ()
         {
             ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
