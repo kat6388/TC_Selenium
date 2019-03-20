@@ -22,7 +22,7 @@ namespace Task70_POM
         public void SetupTest()
         {
             Driver = new ChromeDriver(@"D:\Automation");
-            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(300));
         }
 
         [TearDown]
